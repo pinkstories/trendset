@@ -1,8 +1,8 @@
 
 let kunden = [...kundenData];
+let artikelData = [...artikelData];
 let aktuellerKunde = null;
 let warenkorb = [];
-let bestellungen = [];
 
 const kundeSuche = document.getElementById('kundeSuche');
 const suchErgebnisse = document.getElementById('suchErgebnisse');
@@ -20,8 +20,7 @@ kundeSuche.addEventListener('input', () => {
 
   if (treffer.length === 0) {
     const li = document.createElement('li');
-    li.textContent = 'Neukunde erfassen';
-    li.style.fontStyle = 'italic';
+    li.textContent = 'Kein Kunde gefunden.';
     suchErgebnisse.appendChild(li);
     return;
   }
@@ -49,7 +48,7 @@ document.getElementById('scanInput').addEventListener('keydown', (e) => {
       return;
     }
     const vorhandener = warenkorb.find(w => w.artikelnummer === nummer);
-    const vielfaches = artikel.vielfaches || 1;
+    const vielfaches = 1;
     if (vorhandener) {
       vorhandener.menge += vielfaches;
     } else {
@@ -82,9 +81,9 @@ function updateWarenkorb() {
 
 function mengeAnpassen(index, richtung) {
   const artikel = warenkorb[index];
-  const einheitMenge = artikel.vielfaches || 1;
+  const einheitMenge = 1;
   artikel.menge += richtung * einheitMenge;
-  if (artikel.menge < einheitMenge) {
+  if (artikel.menge < 1) {
     warenkorb.splice(index, 1);
   }
   updateWarenkorb();
@@ -137,10 +136,5 @@ function abschliessen() {
 }
 
 function exportiereBestellungen() {
-  alert("Export wird noch entwickelt.");
-}
-
-function loescheAlleBestellungen() {
-  warenkorb = [];
-  updateWarenkorb();
+  alert("Exportfunktion folgt.");
 }
