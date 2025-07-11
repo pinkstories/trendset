@@ -2,54 +2,20 @@
 <html lang="de">
 <head>
   <meta charset="UTF-8">
-  <title>Messe-Bestelltool</title>
+  <title>Messe-Tool</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="container">
-    <h1>Messe-Bestelltool</h1>
-
-    <input id="kundeSuche" type="text" placeholder="Kunde suchen …">
-    <ul id="suchErgebnisse"></ul>
-    <div id="aktuellerKunde"></div>
-    <div id="sperrhinweis" style="color:red;"></div>
-
-    <div id="neukundeFormular" style="display:none;">
-      <h3>Neukunde erfassen</h3>
-      <input id="firma" placeholder="Firma *">
-      <input id="vorname" placeholder="Vorname *">
-      <input id="nachname" placeholder="Nachname *">
-      <input id="strasse" placeholder="Straße *">
-      <input id="plz" placeholder="PLZ *">
-      <input id="ort" placeholder="Ort *">
-      <select id="land">
-        <option>Deutschland</option>
-        <option>Österreich</option>
-        <option>Frankreich</option>
-        <option>Italien</option>
-        <option>Niederlande</option>
-      </select>
-      <input id="ustid" placeholder="USt-IdNr." style="display:none;">
-      <input id="telefon" placeholder="Telefon *">
-      <input id="email" placeholder="E-Mail *">
-      <button onclick="neukundeSpeichern()">Neukunde speichern</button>
-    </div>
-
-    <input id="scanInput" placeholder="Artikelnummer eingeben oder scannen …">
-
-    <h3>Warenkorb</h3>
-    <ul id="warenkorbListe"></ul>
-    <div id="gesamtpreis"></div>
-
-    <input id="lieferdatum" type="date" placeholder="Lieferdatum">
-    <textarea id="kommentar" placeholder="Kommentar …"></textarea>
-
-    <button onclick="speichereBestellung()">💾 Bestellung speichern</button>
-    <button onclick="exportiereBestellungen()">⬇️ Als CSV exportieren</button>
-    <button onclick="loescheAlleBestellungen()">🗑️ Alle Bestellungen löschen</button>
-
-    <div id="gespeicherteListe"></div>
-  </div>
+  <h1>Messe Tool</h1>
+  <input id="kundeSuche" placeholder="Kunde suchen">
+  <ul id="suchErgebnisse"></ul>
+  <div id="aktuellerKunde"></div>
+  <input id="scanInput" placeholder="Artikelnummer">
+  <ul id="warenkorbListe"></ul>
+  <div id="gesamtpreis"></div>
+  <input id="lieferdatum" type="date">
+  <textarea id="kommentar" placeholder="Kommentar"></textarea>
+  <button onclick="speichereBestellung()">💾 Bestellung speichern</button>
   <script src="script.js"></script>
 </body>
 </html>
