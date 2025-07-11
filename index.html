@@ -2,20 +2,34 @@
 <html lang="de">
 <head>
   <meta charset="UTF-8">
-  <title>Messe-Tool</title>
+  <title>Messe Tool</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1>Messe Tool</h1>
-  <input id="kundeSuche" placeholder="Kunde suchen">
-  <ul id="suchErgebnisse"></ul>
-  <div id="aktuellerKunde"></div>
-  <input id="scanInput" placeholder="Artikelnummer">
-  <ul id="warenkorbListe"></ul>
-  <div id="gesamtpreis"></div>
-  <input id="lieferdatum" type="date">
-  <textarea id="kommentar" placeholder="Kommentar"></textarea>
-  <button onclick="speichereBestellung()">💾 Bestellung speichern</button>
+  <div class="container">
+    <h1>Messe-Bestelltool</h1>
+
+    <input id="kundeSuche" type="text" placeholder="Kunde suchen …">
+    <ul id="suchErgebnisse"></ul>
+    <div id="aktuellerKunde"></div>
+    <div id="sperrhinweis" style="color:red;"></div>
+
+    <input id="scanInput" type="text" placeholder="Artikelnummer eingeben oder scannen …">
+
+    <h3>Warenkorb</h3>
+    <ul id="warenkorbListe"></ul>
+    <div id="gesamtpreis"></div>
+
+    <input id="lieferdatum" type="date" placeholder="Lieferdatum">
+    <textarea id="kommentar" placeholder="Kommentar …"></textarea>
+
+    <button onclick="abschliessen()">💾 Bestellung speichern</button>
+    <button onclick="exportiereBestellungen()">⬇️ Als CSV exportieren</button>
+    <button onclick="loescheAlleBestellungen()">🗑️ Alle Bestellungen löschen</button>
+  </div>
+
+  <script src="kundenData.js"></script>
+  <script src="artikelData.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
