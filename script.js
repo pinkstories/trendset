@@ -224,3 +224,40 @@ function exportiereBestellungen() {
   a.click();
   URL.revokeObjectURL(url);
 }
+function speichereBestellung() {
+  if (!aktuellerKunde) {
+    alert("Bitte zuerst einen Kunden auswählen oder erfassen!");
+    return;
+  }
+
+  const lieferdatum = document.getElementById("lieferdatum")?.value || "";
+  const kommentar = document.getElementById("kommentar")?.value || "";
+
+  const bestellung = {
+    kunde: aktuellerKunde,
+    warenkorb: warenkorb,
+    lieferdatum: lieferdatum,
+    kommentar: kommentar
+  };
+
+  fetch("DEINE_GOOGLE_SCRIPT_URL", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(bestellung)
+  })
+  .then(response => {
+    if (response.ok) {
+      alert("✅ Bestellung erfolgreich online gespeichert!");
+      warenkorb = [];
+      updateWarenkorb();
+    } else {
+      alert("⚠️ Fehler beim Speichern!");
+    }
+  })
+  .catch(error => {
+    console.error("Fehler beim Speichern:", error);
+    alert("❌ Netzwerkfehler beim Speichern.");
+  });
+}
